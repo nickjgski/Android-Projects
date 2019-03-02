@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PP01</string>
+    <string-array name="brands">
+        <item>HP</item>
+        <item>Lenovo</item>
+    </string-array>
+
+    <string name="i3">i3</string>
+    <string name="i5">i5</string>
+    <string name="i7">i7</string>
+</resources>

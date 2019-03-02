@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Tutorial02</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="CS">Al-Khwarizmi popularizing treatise on algebra (The Compendious Book on Calculation by Completion
+        and Balancing, c. 813–833 CE[9]:171) presented the first systematic solution of linear and quadratic equations.
+        One of his principal achievements in algebra was his demonstration of how to solve quadratic equations by
+        completing the square, for which he provided geometric justifications.[8]:14 Because he was the first to treat
+        algebra as an independent discipline and introduced the methods of "reduction" and "balancing" (the
+        transposition of subtracted terms to the other side of an equation, that is, the cancellation of like terms on
+        opposite sides of the equation),[10] he has been described as the father[11][12] or founder[13][14] of algebra.
+    </string>
+    <string name="ECE">"Attempting to develop inventions he could patent and market, Tesla conducted a range of
+        experiments with mechanical oscillators/generators, electrical discharge tubes, and early X-ray imaging. He also
+        built a wireless-controlled boat, one of the first ever exhibited. Tesla became well known as an inventor and
+        would demonstrate his achievements to celebrities and wealthy patrons at his lab, and was noted for his
+        showmanship at public lectures. Throughout the 1890s, Tesla pursued his ideas for wireless lighting and
+        worldwide wireless electric power distribution in his high-voltage, high-frequency power experiments in New York
+        and Colorado Springs. In 1893, he made pronouncements on the possibility of wireless communication with his
+        devices. Tesla tried to put these ideas to practical use in his unfinished Wardenclyffe Tower project, an
+        intercontinental wireless communication and power transmitter, but ran out of funding before he could complete
+        it.[7]
+    </string>
+    <string name="MATH">In Principia, Newton formulated the laws of motion and universal gravitation that formed the
+        dominant scientific viewpoint until it was superseded by the theory of relativity. Newton used his mathematical
+        description of gravity to prove Kepler laws of planetary motion, account for tides, the trajectories of comets,
+        the precession of the equinoxes and other phenomena, eradicating doubt about the Solar System heliocentricity.
+        He demonstrated that the motion of objects on Earth and celestial bodies could be accounted for by the same
+        principles. Newton inference that the Earth is an oblate spheroid was later confirmed by the geodetic
+        measurements of Maupertuis, La Condamine, and others, convincing most European scientists of the superiority of
+        Newtonian mechanics over earlier systems.
+    </string>
+    <string name="STAT">Gertrude Mary Cox (January 13, 1900 – October 17, 1978) was an American statistician and founder
+        of the department of Experimental Statistics at North Carolina State University. She was later appointed
+        director of both the Institute of Statistics of the Consolidated University of North Carolina and the Statistics
+        Research Division of North Carolina State University. Her most important and influential research dealt with
+        experimental design; she wrote an important book on the subject with W. G. Cochran. In 1949 Cox became the first
+        female elected into the International Statistical Institute and in 1956 was President of the American
+        Statistical Association.
+    </string>
+    <string name="PHYS">Newton built the first practical reflecting telescope and developed a sophisticated theory of
+        colour based on the observation that a prism separates white light into the colours of the visible spectrum. His
+        work on light was collected in his highly influential book Opticks, published in 1704. He also formulated an
+        empirical law of cooling, made the first theoretical calculation of the speed of sound, and introduced the
+        notion of a Newtonian fluid. In addition to his work on calculus, as a mathematician Newton contributed to the
+        study of power series, generalised the binomial theorem to non-integer exponents, developed a method for
+        approximating the roots of a function, and classified most of the cubic plane curves.
+    </string>
+
+    <string name="CSurl">https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi</string>
+    <string name="PHYSurl">https://en.wikipedia.org/wiki/Isaac_Newton</string>
+    <string name="STATurl">https://en.wikipedia.org/wiki/Gertrude_Mary_Cox</string>
+    <string name="MATHurl">https://en.wikipedia.org/wiki/Isaac_Newton</string>
+    <string name="ECEurl">https://en.wikipedia.org/wiki/Nikola_Tesla</string>
+
+</resources>

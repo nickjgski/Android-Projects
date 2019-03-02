@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tutorial01</string>
+    <string name="usdLabel">TextView</string>
+    <string name="lbsLabel">TextView</string>
+    <string name="total">TextView</string>
+    <string name="the_pricing_based_on_weight">The pricing based on weight</string>
+</resources>

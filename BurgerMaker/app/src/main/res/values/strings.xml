@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Burger Maker</string>
+    <string name="app_logo_text">The logo for the app</string>
+    <string name="numberLabel">Enter Number of Burgers</string>
+    <string name="number_of_burgers">Number of Burgers</string>
+    <string name="bunText">Choose Your Bun</string>
+    <string name="pattyText">Pick Your Patty</string>
+    <string name="toppingsText">Top Your Burger (3 maximum)</string>
+    <string name="mushroomText">Sauteed Mushrooms</string>
+    <string name="mayoText">Mayo</string>
+    <string name="lettuceText">Lettuce</string>
+    <string name="picklesText">Pickles</string>
+    <string name="tomatoText">Tomato</string>
+    <string name="mustardText">Mustard</string>
+    <string name="calorie_total">Calorie total:</string>
+    <string name="price_total">Price total:</string>
+    <string name="whiteText">White</string>
+    <string name="wheatText">Wheat</string>
+    <string-array name="patties">
+        <item>Beef</item>
+        <item>Grilled Chicken</item>
+        <item>Turkey</item>
+        <item>Salmon</item>
+        <item>Veggie</item>
+    </string-array>
+</resources>

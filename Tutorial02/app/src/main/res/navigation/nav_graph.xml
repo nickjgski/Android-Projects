@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/list">
+    <fragment android:id="@+id/list" android:name="com.nickjgski.tutorial02.List" android:label="fragment_list2"
+              tools:layout="@layout/fragment_list">
+        <action android:id="@+id/action_list_to_detailfrag" app:destination="@id/detailfrag"/>
+    </fragment>
+    <fragment android:id="@+id/detailfrag" android:name="com.nickjgski.tutorial02.detailfrag"
+              android:label="fragment_detailfrag" tools:layout="@layout/fragment_detail">
+        <action android:id="@+id/action_detailfrag_to_wikiFragment" app:destination="@id/wikiFragment"/>
+    </fragment>
+    <fragment android:id="@+id/wikiFragment" android:name="com.nickjgski.tutorial02.WikiFragment"
+              android:label="fragment_wiki" tools:layout="@layout/fragment_wiki"/>
+</navigation>
