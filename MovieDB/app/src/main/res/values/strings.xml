@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MovieDB</string>
+    <string name="sort_by_text">Sort By:</string>
+    <string name="refresh_text">Refresh</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="recycler_title">Title</string>
+    <string name="recycler_rating">Rating</string>
+    <string name="base_url">https://api.themoviedb.org/3/</string>
+    <string name="picture_base_url">http://image.tmdb.org/t/p/w500/</string>
+    <string name="overview">Overview</string>
+    <string name="favorites">Favorites</string>
+    <string-array name="sort_options">
+        <item>Title</item>
+        <item>Rating</item>
+    </string-array>
+</resources>

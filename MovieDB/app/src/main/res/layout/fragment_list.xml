@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   tools:context=".ListFragment">
+    <Button
+            android:text="@string/refresh_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/refresh" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sortText"
+            app:layout_constraintBottom_toTopOf="@+id/movie_list" android:layout_marginStart="8dp"
+    />
+    <TextView
+            android:text="@string/sort_by_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sortText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/refresh"
+            app:layout_constraintEnd_toStartOf="@+id/spinner"
+            app:layout_constraintBottom_toTopOf="@+id/movie_list"
+            android:layout_marginStart="8dp"/>
+    <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            app:layout_constraintStart_toEndOf="@+id/sortText" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/movie_list"
+            app:layout_constraintEnd_toStartOf="@+id/button" app:layout_constraintVertical_bias="0.583"/>
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/refresh" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/movie_list"/>
+    <Button
+            android:text="@string/favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            app:layout_constraintStart_toEndOf="@+id/spinner"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/movie_list"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
