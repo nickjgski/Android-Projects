@@ -9,6 +9,8 @@
     <string name="picture_base_url">http://image.tmdb.org/t/p/w500/</string>
     <string name="overview">Overview</string>
     <string name="favorites">Favorites</string>
+    <string name="favorite_button_text">Like</string>
+    <string name="unlike_button_text">Unlike</string>
     <string-array name="sort_options">
         <item>Title</item>
         <item>Rating</item>

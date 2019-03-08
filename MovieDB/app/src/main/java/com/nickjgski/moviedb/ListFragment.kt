@@ -13,6 +13,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders.*
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,10 @@ import java.text.SimpleDateFormat
 class ListFragment : Fragment() {
 
     private var sortBy: String = "Title"
+    private var favOn = false
+    private val adapterTitle = MovieListAdapter()
+    private val adapterRating = MovieListAdapter()
+    private var model: MovieViewModel? = null
 
 
     override fun onCreateView(
@@ -33,13 +38,12 @@ class ListFragment : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.fragment_list, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.movie_list)
-        val adapterTitle = MovieListAdapter()
-        val adapterRating = MovieListAdapter()
         recyclerView.adapter = adapterTitle
         recyclerView.layoutManager = LinearLayoutManager(view.context)
-        val model = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        var favorites = view.findViewById<Button>(R.id.favorites)
+        model = activity?.let { of(it).get(MovieViewModel::class.java) }
 
-        model.allMoviesByTitle.observe(
+        model?.allMoviesByTitle?.observe(
             this,
             Observer<List<Movie>>{ movies ->
                 movies?.let{
@@ -48,7 +52,7 @@ class ListFragment : Fragment() {
             }
         )
 
-        model.allMoviesByRating.observe(
+        model?.allMoviesByRating?.observe(
             this,
             Observer<List<Movie>>{ movies ->
                 movies?.let{
@@ -73,29 +77,63 @@ class ListFragment : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 sortBy = parent?.getItemAtPosition(position).toString()
-                if(sortBy.equals("Title")) {
-                    recyclerView.adapter = adapterTitle
-                } else {
-                    recyclerView.adapter = adapterRating
-                }
+                changeAdapter(recyclerView, favorites)
             }
         }
 
         (view.findViewById<Button>(R.id.refresh)).setOnClickListener{
-            model.refreshMovies(1)
+            model?.refreshMovies(1)
+        }
+
+
+        favorites.setOnClickListener {
+            favOn = !favOn
+            changeAdapter(recyclerView, favorites)
         }
 
         return view
     }
 
+    fun changeAdapter(recyclerView: RecyclerView, favorites: Button) {
+        if(sortBy == "Title") {
+            recyclerView.adapter = adapterTitle
+        } else {
+            recyclerView.adapter = adapterRating
+        }
+        if(favOn) {
+            favorites.setText("Favorites")
+            (recyclerView.adapter as MovieListAdapter).restore()
+        } else {
+            favorites.setText("All")
+            (recyclerView.adapter as MovieListAdapter).filterFav()
+        }
+    }
+
     inner class MovieListAdapter():
         RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>(){
         private var movies = emptyList<Movie>()
+        private var moviesBackup = emptyList<Movie>()
 
         internal fun setMovies(movies: List<Movie>) {
+            moviesBackup = movies
             this.movies = movies
             notifyDataSetChanged()
         }
+
+        fun filterFav() {
+
+            movies = movies.filter {model?.favorites?.contains(it.title) as Boolean}
+
+            notifyDataSetChanged()
+
+        }
+
+        fun restore(){
+
+            movies = moviesBackup
+            notifyDataSetChanged()
+        }
+
 
         override fun getItemCount(): Int {
 
@@ -125,7 +163,8 @@ class ListFragment : Fragment() {
                 var date: String = df.format(movies[position].release_date)
                 holder.view.findNavController().navigate(R.id.action_listFragment_to_detailFragment,
                     bundleOf("title" to movies[position].title, "date" to date,
-                        "overview" to movies[position].overview, "poster" to movies[position].poster_path))
+                        "overview" to movies[position].overview, "poster" to movies[position].poster_path,
+                        "id" to movies[position].id))
             }
 
         }

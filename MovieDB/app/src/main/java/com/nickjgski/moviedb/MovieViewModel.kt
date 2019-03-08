@@ -24,17 +24,13 @@ class MovieViewModel(application: Application): AndroidViewModel(application) {
     private val repository: MovieRepository
     var allMoviesByTitle: LiveData<List<Movie>>
     var allMoviesByRating: LiveData<List<Movie>>
+    var favorites: MutableList<String> = mutableListOf()
 
     init {
         val moviesDao = MovieRoomDatabase.getDatabase(application).movieDao()
         repository = MovieRepository(moviesDao)
         allMoviesByTitle = repository.allMoviesByTitle
         allMoviesByRating = repository.allMoviesByRating
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        parentJob.cancel()
     }
 
     fun refreshMovies(page: Int){
@@ -44,6 +40,24 @@ class MovieViewModel(application: Application): AndroidViewModel(application) {
                 AndroidSchedulers.mainThread()).subscribe(
                 {result -> showResult(result)},
                 {error -> showError(error)})
+    }
+
+    fun addToFavorites(title: String?) {
+
+        Log.d("Adding", favorites.size.toString())
+        if (title != null) {
+            favorites.add(title)
+        }
+        Log.d("Adding", favorites.size.toString())
+
+    }
+
+    fun removeFromFavorites(title: String?) {
+
+        Log.d("Removing", favorites.size.toString())
+        favorites.remove(title)
+        Log.d("Removing", favorites.size.toString())
+
     }
 
     private fun showError(error: Throwable?) {
