@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   tools:context=".ControlFragment"
+                                                   android:id="@+id/constraintLayout">
+
+        <TextView
+                android:text="@string/time_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/startstop" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"/>
+        <Button
+                android:text="@string/start_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/startstop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/lap"
+                app:layout_constraintTop_toBottomOf="@+id/time" app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="24dp"/>
+        <Button
+                android:text="@string/lap_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/lap"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/startstop"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/clear"/>
+        <Button
+                android:text="@string/clear_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/clear"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/lap"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

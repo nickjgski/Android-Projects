@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Stopwatch</string>
+    <string name="start_text">Start/Stop</string>
+    <string name="pause_text">Pause</string>
+    <string name="lap_text">Lap</string>
+    <string name="clear_text">Clear</string>
+    <string name="time_display">00:00</string>
+    <string name="laps_button_text">Laps</string>
+    <string name="lap_info_text">Lap:</string>
+    <string name="controlsButton">Controls</string>
+    <string name="controls_button_text">Controls</string>
+</resources>
