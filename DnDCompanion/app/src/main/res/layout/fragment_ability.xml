@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   tools:context=".AbilityFragment"
+                                                   android:background="@color/colorPrimaryLight">
+    <TextView
+            android:text="@string/abilResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chaResult"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toEndOf="@+id/chaMod"
+            android:layout_marginStart="80dp" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/wisResult"
+            app:layout_constraintBottom_toTopOf="@+id/next" android:layout_marginBottom="16dp"/>
+    <TextView
+            android:text="@string/abilMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chaMod"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginStart="32dp" app:layout_constraintStart_toEndOf="@+id/chaSpin"
+            app:layout_constraintEnd_toStartOf="@+id/chaResult" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/wisMod"
+            app:layout_constraintBottom_toTopOf="@+id/next" android:layout_marginBottom="16dp"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chaSpin" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/chaMod"
+            android:layout_marginTop="44dp" app:layout_constraintTop_toBottomOf="@+id/wisSpin"
+            app:layout_constraintBottom_toTopOf="@+id/next" android:layout_marginBottom="16dp"/>
+    <TextView
+            android:text="@string/abilResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wisResult"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toEndOf="@+id/wisMod"
+            android:layout_marginStart="80dp" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/intResult"
+            app:layout_constraintBottom_toTopOf="@+id/chaResult"/>
+    <TextView
+            android:text="@string/abilMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wisMod"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginStart="32dp" app:layout_constraintStart_toEndOf="@+id/wisSpin"
+            app:layout_constraintEnd_toStartOf="@+id/wisResult" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/intMod"
+            app:layout_constraintBottom_toTopOf="@+id/chaMod"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wisSpin" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/wisMod"
+            android:layout_marginTop="48dp" app:layout_constraintTop_toBottomOf="@+id/intSpin"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintBottom_toTopOf="@+id/chaSpin"/>
+    <TextView
+            android:text="@string/abilResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/intResult"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toEndOf="@+id/intMod"
+            android:layout_marginStart="80dp" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/conResult"/>
+    <TextView
+            android:text="@string/abilMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/intMod"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginStart="32dp" app:layout_constraintStart_toEndOf="@+id/intSpin"
+            app:layout_constraintEnd_toStartOf="@+id/intResult" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/conMod"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/intSpin" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/intMod"
+            android:layout_marginTop="48dp" app:layout_constraintTop_toBottomOf="@+id/conSpin"
+            app:layout_constraintBottom_toTopOf="@+id/wisSpin"/>
+    <TextView
+            android:text="@string/abilResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/conResult"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/dexResult"
+            app:layout_constraintStart_toEndOf="@+id/conMod" android:layout_marginStart="80dp"
+            app:layout_constraintBottom_toTopOf="@+id/intResult"/>
+    <TextView
+            android:text="@string/abilMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/conMod"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/dexMod" app:layout_constraintStart_toEndOf="@+id/conSpin"
+            android:layout_marginStart="32dp" app:layout_constraintEnd_toStartOf="@+id/conResult"
+            app:layout_constraintBottom_toTopOf="@+id/intMod"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/conSpin" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="44dp" app:layout_constraintTop_toBottomOf="@+id/dexSpin"
+            app:layout_constraintEnd_toStartOf="@+id/conMod"
+            app:layout_constraintBottom_toTopOf="@+id/intSpin"/>
+    <TextView
+            android:text="@string/abilMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dexMod"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginStart="32dp" app:layout_constraintStart_toEndOf="@+id/dexSpin"
+            android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/strMod"
+            app:layout_constraintEnd_toStartOf="@+id/dexResult"
+            app:layout_constraintBottom_toTopOf="@+id/conMod"/>
+    <TextView
+            android:text="@string/abilResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dexResult"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toEndOf="@+id/dexMod"
+            android:layout_marginStart="80dp" android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/strResult"
+            app:layout_constraintBottom_toTopOf="@+id/conResult"/>
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dexSpin" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/dexMod"
+            android:layout_marginTop="48dp" app:layout_constraintTop_toBottomOf="@+id/strSpin"
+            app:layout_constraintBottom_toTopOf="@+id/conSpin"/>
+    <TextView
+            android:text="@string/abilMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/strMod" android:layout_marginStart="32dp"
+            app:layout_constraintStart_toEndOf="@+id/strSpin"
+            android:layout_marginTop="26dp" app:layout_constraintTop_toBottomOf="@+id/abilityTopText"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toTopOf="@+id/dexMod" app:layout_constraintEnd_toStartOf="@+id/strResult"
+    />
+    <TextView
+            android:text="@string/abilResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/strResult" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/abilityTopText"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toEndOf="@+id/strMod" android:layout_marginStart="80dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+    />
+    <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/strSpin" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp" app:layout_constraintTop_toBottomOf="@+id/abilityTopText"
+            app:layout_constraintBottom_toTopOf="@+id/dexSpin" app:layout_constraintEnd_toStartOf="@+id/strMod"
+    />
+    <TextView
+            android:text="@string/ability_scores"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:id="@+id/abilityTopText"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/strSpin"
+            android:gravity="center"/>
+    <Button
+            android:text="@string/finish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/next" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/chaMod" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

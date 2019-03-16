@@ -1,3 +1,38 @@
 <resources>
-    <string name="app_name">DnDCompanion</string>
+    <string name="app_name">DnD Companion</string>
+    <string name="new_character">New Character</string>
+    <string name="character_name">Name</string>
+    <string name="character_race_class">Race &amp; Class</string>
+    <string name="character_s_name">Character\'s Name</string>
+    <string name="ability_scores">Ability Scores</string>
+    <string name="abilMod">+Num</string>
+    <string name="abilResult">0</string>
+    <string name="finish">Finish</string>
+    <string name="next">Next</string>
+    <string-array name="races">
+        <item>Dragonborn: STR +2, CHA +1</item>
+        <item>Half-Elf: CHA +2</item>
+        <item>Half-Orc: STR +2, CON +1</item>
+        <item>High Elf: DEX +2, INT +1</item>
+        <item>Hill Dwarf: CON +2, WIS +1</item>
+        <item>Human: +1 to All</item>
+        <item>Lightfoot Halfling: DEX +2, CHA +1</item>
+        <item>Rock Gnome: INT +2, CON +1</item>
+        <item>Tiefling: INT +1, CHA +2</item>
+    </string-array>
+    <string-array name="classes">
+        <item>Barbarian</item>
+        <item>Bard</item>
+        <item>Cleric</item>
+        <item>Druid</item>
+        <item>Fighter</item>
+        <item>Monk</item>
+        <item>Paladin</item>
+        <item>Ranger</item>
+        <item>Rogue</item>
+        <item>Sorcerer</item>
+        <item>Warlock</item>
+        <item>Wizard</item>
+    </string-array>
+    <string name="race_class_error">Not all fields chosen</string>
 </resources>

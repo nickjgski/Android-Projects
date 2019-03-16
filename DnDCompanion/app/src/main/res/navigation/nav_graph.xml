@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/listFragment">
+
+    <fragment android:id="@+id/listFragment" android:name="com.nickjgski.dndcompanion.ListFragment"
+              android:label="fragment_list" tools:layout="@layout/fragment_list">
+        <action android:id="@+id/action_listFragment_to_detailFragment" app:destination="@id/detailFragment"/>
+        <action android:id="@+id/action_listFragment_to_raceClassFragment" app:destination="@id/raceClassFragment"/>
+    </fragment>
+    <fragment android:id="@+id/detailFragment" android:name="com.nickjgski.dndcompanion.DetailFragment"
+              android:label="fragment_detail" tools:layout="@layout/fragment_detail"/>
+    <fragment android:id="@+id/raceClassFragment" android:name="com.nickjgski.dndcompanion.RaceClassFragment"
+              android:label="fragment_race_class" tools:layout="@layout/fragment_race_class">
+        <action android:id="@+id/action_raceClassFragment_to_abilityFragment" app:destination="@id/abilityFragment"/>
+    </fragment>
+    <fragment android:id="@+id/abilityFragment" android:name="com.nickjgski.dndcompanion.AbilityFragment"
+              android:label="fragment_ability" tools:layout="@layout/fragment_ability"/>
+</navigation>
