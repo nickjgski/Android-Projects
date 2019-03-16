@@ -16,5 +16,7 @@
         <action android:id="@+id/action_raceClassFragment_to_abilityFragment" app:destination="@id/abilityFragment"/>
     </fragment>
     <fragment android:id="@+id/abilityFragment" android:name="com.nickjgski.dndcompanion.AbilityFragment"
-              android:label="fragment_ability" tools:layout="@layout/fragment_ability"/>
+              android:label="fragment_ability" tools:layout="@layout/fragment_ability">
+        <action android:id="@+id/action_abilityFragment_to_listFragment" app:destination="@id/listFragment"/>
+    </fragment>
 </navigation>

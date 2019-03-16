@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
@@ -28,9 +29,11 @@ class ListFragment : Fragment() {
             view.findNavController().navigate(R.id.action_listFragment_to_raceClassFragment)
         }
         val recyclerView = view.findViewById<RecyclerView>(R.id.charList)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
         recyclerView.adapter = charAdapter
         model = activity?.let { of(it).get(Model::class.java) }
 
+        charAdapter.setCharacters(model?.characters!!)
         model?.numChars?.observe(
             this,
             Observer<Int> {
