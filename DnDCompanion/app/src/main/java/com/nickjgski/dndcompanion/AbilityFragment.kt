@@ -52,8 +52,9 @@ class AbilityFragment : Fragment() {
         chaResult = view.findViewById(R.id.chaResult)
         initSpinners(view)
         view.findViewById<Button>(R.id.next).setOnClickListener {
-            var character = Character(charName!!, charClass!!, charRace!!, 1, result, 10, ArrayList())
-            model?.addCharacter(character)
+            var character = Character(charName!!, charClass!!, charRace!!, 1, result[0], result[1], result[2], result[3],
+                result[4], result[5], 10)
+            model?.insert(character)
             view.findNavController().navigate(R.id.action_abilityFragment_to_listFragment)
         }
         return view
@@ -146,6 +147,7 @@ class AbilityFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         charName = this.arguments?.getString("name")
         charRace = this.arguments?.getString("race")
+        charRace = charRace?.substringBefore(':')
         charClass = this.arguments?.getString("class")
         modifiers[0] = this.arguments?.getInt("strMod")!!
         modifiers[1] = this.arguments?.getInt("dexMod")!!

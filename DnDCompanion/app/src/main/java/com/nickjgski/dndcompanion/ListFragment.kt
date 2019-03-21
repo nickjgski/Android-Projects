@@ -33,11 +33,10 @@ class ListFragment : Fragment() {
         recyclerView.adapter = charAdapter
         model = activity?.let { of(it).get(Model::class.java) }
 
-        charAdapter.setCharacters(model?.characters!!)
-        model?.numChars?.observe(
+        model?.allCharacters?.observe(
             this,
-            Observer<Int> {
-                model?.characters?.let {
+            Observer<List<Character>>{ characters ->
+                characters?.let {
                     charAdapter.setCharacters(it)
                 }
             }
@@ -48,9 +47,9 @@ class ListFragment : Fragment() {
 
     inner class CharacterListAdapter(): RecyclerView.Adapter<CharacterListAdapter.CharacterViewHolder>() {
 
-        private var chars = ArrayList<Character>()
+        private var chars = emptyList<Character>()
 
-        internal fun setCharacters(characters: ArrayList<Character>) {
+        internal fun setCharacters(characters: List<Character>) {
             this.chars = characters
             notifyDataSetChanged()
         }

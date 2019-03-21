@@ -1,27 +1,45 @@
 package com.nickjgski.dndcompanion
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 class Model(application: Application): AndroidViewModel(application) {
 
-    val characters = ArrayList<Character>()
-    val numChars = MutableLiveData<Int>()
+    private var parentJob = Job()
+    private val coroutineContext: CoroutineContext
+        get() = parentJob + Dispatchers.Main
+    private val scope = CoroutineScope(coroutineContext)
+
+    private val repository: CharacterRepository
+    var allCharacters: LiveData<List<Character>>
 
     init {
-        numChars.value = 0
+        val charsDao = CharacterRoomDatabase.getDatabase(application).charDao()
+        repository = CharacterRepository(charsDao)
+        allCharacters = repository.allCharacters
     }
 
-    fun addCharacter(character: Character) {
-        characters.add(character)
-        numChars.postValue(characters.size)
+    fun insert(character: Character) = scope.launch (Dispatchers.IO) {
+        repository.insert(character)
     }
 
-    fun removeCharacter(character: Character) {
-        characters.remove(character)
-        numChars.postValue(characters.size)
+    fun delete(character: Character) = scope.launch (Dispatchers.IO) {
+        repository.delete(character)
+    }
+
+    fun deleteAll() = scope.launch (Dispatchers.IO){
+        repository.deleteAll()
     }
 
 }

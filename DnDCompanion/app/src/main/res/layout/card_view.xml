@@ -4,7 +4,7 @@
                                    xmlns:tools="http://schemas.android.com/tools"
                                    android:layout_width="match_parent"
                                    android:layout_height="wrap_content"
-                                   android:layout_margin="5dp" app:cardBackgroundColor="@color/cardview_dark_background"
+                                   android:layout_margin="5dp" app:cardBackgroundColor="@color/cardview_light_background"
                                    tools:layout_editor_absoluteY="5dp" tools:layout_editor_absoluteX="5dp">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
