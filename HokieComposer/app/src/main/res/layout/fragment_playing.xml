@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".PlayingFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   tools:context=".PlayingFragment">
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
-
-</FrameLayout>
+            android:text="@string/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/song_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="64dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+    <ImageView
+            android:src="@drawable/letsgohokies"
+            android:layout_width="240dp"
+            android:layout_height="360dp"
+            android:id="@+id/imageView" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/song_title" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/image_description" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/play_pause"/>
+    <Button
+            android:text="@string/play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/play_pause"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/restart"/>
+    <Button
+            android:text="@string/restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restart" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/play_pause" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

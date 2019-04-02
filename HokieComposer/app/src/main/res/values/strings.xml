@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">Hokie Composer</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="image_description">Image reflects sound being playedd</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="restart">Restart</string>
+    <string-array name="background">
+        <item>Go Tech Go!</item>
+        <item>Mario</item>
+        <item>Tetris</item>
+    </string-array>
+    <string-array name="effects">
+        <item>Cheering</item>
+        <item>Clapping</item>
+        <item>Go Hokies!</item>
+    </string-array>
 </resources>
