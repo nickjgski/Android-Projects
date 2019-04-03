@@ -25,10 +25,10 @@ class EditingFragment : Fragment() {
     private lateinit var effect1SeekBar: SeekBar
     private lateinit var effect2SeekBar: SeekBar
     private lateinit var effect3SeekBar: SeekBar
-    var selectedMusic: Int = -1
-    var effect1: Int = -1
-    var effect2: Int = -1
-    var effect3: Int = -1
+    private var selectedMusic: Int = 0
+    private var effect1: Int = 0
+    private var effect2: Int = 0
+    private var effect3: Int = 0
     private var effect1start: Int = 0
     private var effect2start: Int = 0
     private var effect3start: Int = 0
@@ -69,12 +69,15 @@ class EditingFragment : Fragment() {
             effect3Spinner.adapter = adapter
         }
 
-
+        effect1SeekBar.min = 0
+        effect2SeekBar.min = 0
+        effect3SeekBar.min = 0
 
         musicSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                selectedMusic = position
+                setBoundaries()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -86,7 +89,7 @@ class EditingFragment : Fragment() {
         effect1Spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                effect1 = position
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -98,7 +101,7 @@ class EditingFragment : Fragment() {
         effect2Spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                effect2 = position
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -110,7 +113,7 @@ class EditingFragment : Fragment() {
         effect3Spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
+                effect3 = position
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -167,27 +170,43 @@ class EditingFragment : Fragment() {
 
         })
 
-        var playButton = view.findViewById<Button>(R.id.play)
+        val playButton = view.findViewById<Button>(R.id.play)
         playButton.setOnClickListener {
-            if(selectedMusic != -1 && effect1 != -1 && effect2 != -1 && effect3 != -1) {
                 view.findNavController().navigate(
                     R.id.action_editingFragment_to_playingFragment,
-                    bundleOf("song" to)
+                    bundleOf("song" to selectedMusic, "effect1" to effect1, "effect2" to effect2,
+                        "effect3" to effect3, "start1" to effect1start, "start2" to effect2start,
+                        "start3" to effect3start)
                 )
-            }
         }
-        
+
         return view
     }
 
     private fun setBoundaries() {
 
-        effect1SeekBar.min = 0
-        effect1SeekBar.max = 49
-        effect2SeekBar.min = 0
-        effect2SeekBar.max = 49
-        effect3SeekBar.min = 0
-        effect3SeekBar.max = 49
+        when(selectedMusic) {
+            0 -> {
+                effect1SeekBar.max = 49
+                effect2SeekBar.max = 49
+                effect3SeekBar.max = 49
+            }
+            1 -> {
+                effect1SeekBar.max = 27
+                effect2SeekBar.max = 27
+                effect3SeekBar.max = 27
+            }
+            2 -> {
+                effect1SeekBar.max = 25
+                effect2SeekBar.max = 25
+                effect3SeekBar.max = 25
+            }
+            -1 -> {
+                effect1SeekBar.max = 49
+                effect2SeekBar.max = 49
+                effect3SeekBar.max = 49
+            }
+        }
 
     }
 

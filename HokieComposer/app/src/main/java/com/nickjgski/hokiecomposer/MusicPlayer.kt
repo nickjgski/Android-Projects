@@ -3,6 +3,7 @@ package com.nickjgski.hokiecomposer
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.net.Uri
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import java.io.IOException
@@ -16,7 +17,7 @@ class MusicPlayer(val musicService: MusicService): MediaPlayer.OnCompletionListe
     val SONGS = arrayOf(R.raw.gotechgo, R.raw.mario, R.raw.tetris)
     val EFFECTS = arrayOf(R.raw.cheering, R.raw.clapping, R.raw.lestgohokies)
 
-    val MUSICNAME = arrayOf("Super Mario", "Tetris")
+    val MUSICNAME = arrayOf("Go Tech Go", "Super Mario", "Tetris")
 
 
     lateinit var player: MediaPlayer
@@ -39,19 +40,12 @@ class MusicPlayer(val musicService: MusicService): MediaPlayer.OnCompletionListe
         } else {
             return SONGS[song]
         }
-
     }
 
     fun playMusic(song: Int, effect: Boolean) {
+        Log.d("play button", "playing")
         player = MediaPlayer.create(musicService.baseContext, getSound(song, effect))
-        player.setAudioAttributes(
-            AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build()
-        )
         try {
-            player.prepare()
             player.setOnCompletionListener(this)
             player.start()
             musicService.onUpdateMusicName(getMusicName())
@@ -71,11 +65,19 @@ class MusicPlayer(val musicService: MusicService): MediaPlayer.OnCompletionListe
     }
 
     fun resumeMusic() {
-        player.seekTo(currentPosition)
+        if(musicStatus == 2) {
+            player.seekTo(currentPosition)
+            player.start()
+            musicStatus = 1
+        }
+    }
+
+    fun restartMusic() {
+        player.pause()
+        player.seekTo(0)
         player.start()
         musicStatus = 1
     }
-
 
     override fun onCompletion(mp: MediaPlayer?) {
         player.release()

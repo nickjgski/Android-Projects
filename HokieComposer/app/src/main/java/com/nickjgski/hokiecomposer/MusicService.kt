@@ -5,6 +5,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
+import android.util.Log
 
 class MusicService: Service() {
 
@@ -42,27 +43,50 @@ class MusicService: Service() {
     override fun onCreate() {
         super.onCreate()
         musicPlayer = MusicPlayer(this)
+        effect1Player = MusicPlayer(this)
+        effect2Player = MusicPlayer(this)
+        effect2Player = MusicPlayer(this)
+        Log.d("create", "created")
     }
 
-    fun startMusic(song: Int, effect1: Int, effect2: Int, effect3: Int) {
+    fun startMusic(song: Int) {
+        Log.d("play button", "playing music")
         musicPlayer?.playMusic(song, false)
-        effect1Player?.playMusic(effect1, true)
-        effect2Player?.playMusic(effect2, true)
-        effect3Player?.playMusic(effect3, true)
     }
 
-    fun pauseMusic() {
-        musicPlayer?.pauseMusic()
-        effect1Player?.pauseMusic()
-        effect2Player?.pauseMusic()
-        effect3Player?.pauseMusic()
+    fun startEffect(num: Int, effect: Int) {
+        when(num) {
+            0 -> effect1Player?.playMusic(effect, true)
+            1 -> effect2Player?. playMusic (effect, true)
+            2 -> effect3Player?.playMusic(effect, true)
+        }
     }
 
-    fun resumeMusic() {
-        musicPlayer?.resumeMusic()
-        effect1Player?.resumeMusic()
-        effect2Player?.resumeMusic()
-        effect3Player?.resumeMusic()
+    fun pauseMusic(num: Int) {
+        when(num) {
+            3 -> musicPlayer?.pauseMusic()
+            0 -> effect1Player ?.pauseMusic()
+            1 -> effect2Player ?.pauseMusic()
+            2 -> effect3Player ?.pauseMusic()
+        }
+    }
+
+    fun resumeMusic(num: Int) {
+        when(num) {
+            3 -> musicPlayer?.resumeMusic()
+            0 -> effect1Player ?.resumeMusic()
+            1 -> effect2Player ?.resumeMusic()
+            2 -> effect3Player ?.resumeMusic()
+        }
+    }
+    
+    fun restartMusic(num: Int) {
+        when(num) {
+            3 -> musicPlayer?.restartMusic()
+            0 -> effect1Player ?.restartMusic()
+            1 -> effect2Player ?.restartMusic()
+            2 -> effect3Player ?.restartMusic()
+        }
     }
 
     fun getPlayingStatus(): Int {
