@@ -9,6 +9,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 
 
 class EditingFragment : Fragment() {
@@ -78,6 +82,7 @@ class EditingFragment : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 selectedMusic = position
                 setBoundaries()
+                appendEvent("Music changed")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -90,6 +95,7 @@ class EditingFragment : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 effect1 = position
+                appendEvent("Effect 1 changed")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -102,6 +108,7 @@ class EditingFragment : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 effect2 = position
+                appendEvent("Effect 2 changed")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -114,6 +121,7 @@ class EditingFragment : Fragment() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 effect3 = position
+                appendEvent("Effect 3 changed")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -126,6 +134,7 @@ class EditingFragment : Fragment() {
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 effect1start = progress
+                appendEvent("Effect 1 timing changed")
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -142,6 +151,7 @@ class EditingFragment : Fragment() {
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 effect2start = progress
+                appendEvent("Effect 2 timing changed")
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -158,6 +168,8 @@ class EditingFragment : Fragment() {
 
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 effect3start = progress
+                appendEvent("Effect 3 timing changed")
+
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -178,6 +190,7 @@ class EditingFragment : Fragment() {
                         "effect3" to effect3, "start1" to effect1start, "start2" to effect2start,
                         "start3" to effect3start)
                 )
+            appendEvent("Going to playing fragment")
         }
 
         return view
@@ -224,6 +237,14 @@ class EditingFragment : Fragment() {
         outState.putInt("Effect2", effect2)
         outState.putInt("Effect3", effect3)
         super.onSaveInstanceState(outState)
+    }
+
+    private fun appendEvent(event: String) {
+        val uploadWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>()
+            .setInputData(workDataOf("username" to MainActivity.USERNAME, "event" to event))
+            .build()
+
+        WorkManager.getInstance().beginUniqueWork(event, ExistingWorkPolicy.APPEND, uploadWorkRequest).enqueue()
     }
 
 }

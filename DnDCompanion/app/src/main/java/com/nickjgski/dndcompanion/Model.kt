@@ -21,25 +21,36 @@ class Model(application: Application): AndroidViewModel(application) {
         get() = parentJob + Dispatchers.Main
     private val scope = CoroutineScope(coroutineContext)
 
-    private val repository: CharacterRepository
+    private val charRepo: CharacterRepository
+    private val weaponRepo: WeaponRepository
     var allCharacters: LiveData<List<Character>>
 
     init {
         val charsDao = CharacterRoomDatabase.getDatabase(application).charDao()
-        repository = CharacterRepository(charsDao)
-        allCharacters = repository.allCharacters
+        charRepo = CharacterRepository(charsDao)
+        allCharacters = charRepo.allCharacters
+        val weaponDao = CharacterRoomDatabase.getDatabase(application).weaponDao()
+        weaponRepo = WeaponRepository(weaponDao)
     }
 
-    fun insert(character: Character) = scope.launch (Dispatchers.IO) {
-        repository.insert(character)
+    fun insertCharacter(character: Character) = scope.launch (Dispatchers.IO) {
+        charRepo.insert(character)
     }
 
-    fun delete(character: Character) = scope.launch (Dispatchers.IO) {
-        repository.delete(character)
+    fun deleteCharacter(character: Character) = scope.launch (Dispatchers.IO) {
+        charRepo.delete(character)
     }
 
-    fun deleteAll() = scope.launch (Dispatchers.IO){
-        repository.deleteAll()
+    fun deleteAllCharacters() = scope.launch (Dispatchers.IO){
+        charRepo.deleteAll()
+    }
+
+    fun getCharacterWeapons(name: String): LiveData<List<Weapon>> {
+        return weaponRepo.getWeapons(name)
+    }
+
+    fun insertWeapon(weapon: Weapon) = scope.launch (Dispatchers.IO) {
+
     }
 
 }

@@ -59,4 +59,7 @@
     </string-array>
     <string name="race_class_error">Not all fields chosen</string>
     <string name="default">Default</string>
+    <string name="weapons">Weapons</string>
+    <string name="combat">Combat</string>
+    <string name="delete">Delete</string>
 </resources>

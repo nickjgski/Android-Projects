@@ -8,13 +8,24 @@
         tools:context=".MainActivity"
         android:background="@color/colorPrimaryLight">
 
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toTopOf="@+id/fragment"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
     <fragment
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp" app:navGraph="@navigation/nav_graph" app:defaultNavHost="true"
             android:id="@+id/fragment"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_toolbar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

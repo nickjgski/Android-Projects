@@ -11,6 +11,8 @@ abstract class CharacterRoomDatabase: RoomDatabase() {
 
     abstract fun charDao(): CharacterDao
 
+    abstract fun weaponDao(): WeaponDao
+
     companion object {
         @Volatile
         private var INSTANCE: CharacterRoomDatabase? = null

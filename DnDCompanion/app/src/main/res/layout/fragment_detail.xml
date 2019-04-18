@@ -62,7 +62,8 @@
             app:layout_constraintTop_toBottomOf="@+id/dexText"
             app:layout_constraintEnd_toStartOf="@+id/chaText"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toTopOf="@+id/weaponButton"
+            app:layout_constraintVertical_chainStyle="packed"/>
     <TextView
             android:text="@string/default"
             android:layout_width="wrap_content"
@@ -71,6 +72,32 @@
             android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/intText" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="80dp" app:layout_constraintStart_toEndOf="@+id/conText"
-            android:layout_marginEnd="16dp" android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/weaponButton" android:layout_marginBottom="16dp"/>
+    <Button
+            android:text="@string/weapons"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/weaponButton" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="48dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="48dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/conText"
+            app:layout_constraintBottom_toTopOf="@+id/combatButton"/>
+    <Button
+            android:text="@string/combat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/combatButton" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="48dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="48dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/weaponButton"/>
+    <Button
+            android:text="@string/delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteButton" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="48dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="48dp" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/combatButton" android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

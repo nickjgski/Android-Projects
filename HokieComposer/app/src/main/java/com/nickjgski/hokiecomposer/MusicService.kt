@@ -65,9 +65,9 @@ class MusicService: Service() {
     fun pauseMusic(num: Int) {
         when(num) {
             3 -> musicPlayer?.pauseMusic()
-            0 -> effect1Player ?.pauseMusic()
-            1 -> effect2Player ?.pauseMusic()
-            2 -> effect3Player ?.pauseMusic()
+            0 -> effect1Player?.pauseMusic()
+            1 -> effect2Player?.pauseMusic()
+            2 -> effect3Player?.pauseMusic()
         }
     }
 
@@ -91,6 +91,14 @@ class MusicService: Service() {
 
     fun getPlayingStatus(): Int {
         return musicPlayer?.getMusicStatus() ?: -1
+    }
+
+    fun stopMusic() {
+
+        musicPlayer?.stopMusic()
+        effect1Player?.stopMusic()
+        effect2Player?.stopMusic()
+        effect3Player?.stopMusic()
     }
 
 }

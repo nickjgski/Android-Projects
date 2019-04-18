@@ -11,6 +11,16 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val TAG = "Hokie Composer"
+        const val USERNAME = "nickjg98"
+        const val URL = "https://posthere.io"
+        const val ROUTE = "72e0-42ff-820a"
+        const val INIT_STATYS = "Initialization started"
+        const val MUSIC_PLAYING = "music playing"
+    }
+
+
     val INITIALIZE_STATUS = "intialization status"
     val MUSIC_PLAYING = "music playing"
 
@@ -250,4 +260,9 @@ class MainActivity : AppCompatActivity() {
         }, ONE_SECOND.toLong(), ONE_SECOND.toLong())
     }
 
+    fun stopMusic() {
+
+        musicService?.stopMusic()
+
+    }
 }

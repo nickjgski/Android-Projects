@@ -54,7 +54,7 @@ class AbilityFragment : Fragment() {
         view.findViewById<Button>(R.id.next).setOnClickListener {
             var character = Character(charName!!, charClass!!, charRace!!, 1, result[0], result[1], result[2], result[3],
                 result[4], result[5], 10)
-            model?.insert(character)
+            model?.insertCharacter(character)
             view.findNavController().navigate(R.id.action_abilityFragment_to_listFragment)
         }
         return view
