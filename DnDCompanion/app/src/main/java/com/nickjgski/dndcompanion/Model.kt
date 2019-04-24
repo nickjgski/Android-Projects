@@ -37,8 +37,8 @@ class Model(application: Application): AndroidViewModel(application) {
         charRepo.insert(character)
     }
 
-    fun deleteCharacter(character: Character) = scope.launch (Dispatchers.IO) {
-        charRepo.delete(character)
+    fun deleteCharacter(name: String) = scope.launch (Dispatchers.IO) {
+        charRepo.delete(charRepo.getCharacter(name))
     }
 
     fun deleteAllCharacters() = scope.launch (Dispatchers.IO){
@@ -50,7 +50,7 @@ class Model(application: Application): AndroidViewModel(application) {
     }
 
     fun insertWeapon(weapon: Weapon) = scope.launch (Dispatchers.IO) {
-
+        weaponRepo.insert(weapon)
     }
 
 }

@@ -9,6 +9,9 @@ interface CharacterDao {
     @Query("SELECT * FROM character_table order BY  name ASC")
     fun getAllCharacters(): LiveData<List<Character>>
 
+    @Query("SELECT * FROM character_table WHERE name LIKE :searchName")
+    fun getCharacter(searchName: String): Character
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCharacter(character: Character)
 

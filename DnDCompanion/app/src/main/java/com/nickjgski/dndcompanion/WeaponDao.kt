@@ -19,7 +19,7 @@ interface WeaponDao {
     @Delete
     fun deleteWeapon(weapon: Weapon)
 
-    @Query("SELECT * FROM weapon WHERE characterName = name")
+    @Query("SELECT * FROM weapon WHERE characterName LIKE :name")
     fun findWeaponsForChar(name: String): LiveData<List<Weapon>>
 
 }

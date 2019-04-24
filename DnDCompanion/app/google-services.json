@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "870267871922",
+    "firebase_url": "https://dndcompanionserver.firebaseio.com",
+    "project_id": "dndcompanionserver",
+    "storage_bucket": "dndcompanionserver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870267871922:android:fc45111510169dc8",
+        "android_client_info": {
+          "package_name": "com.nickjgski.dndcompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870267871922-5fmmio547iiasam2j1tbc9preup084v9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nickjgski.dndcompanion",
+            "certificate_hash": "4278e5796cecb2a98c3b55e86b3ca39f2b0a3eee"
+          }
+        },
+        {
+          "client_id": "870267871922-0mmeut3o52tfru8vevbj3elaosql8nbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2oE5p5Yu9qaJYFpPRLz3iTU0ME9r1TFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "870267871922-0mmeut3o52tfru8vevbj3elaosql8nbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

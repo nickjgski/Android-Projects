@@ -8,6 +8,11 @@ class CharacterRepository(private val charDao: CharacterDao) {
     val allCharacters: LiveData<List<Character>> = charDao.getAllCharacters()
 
     @WorkerThread
+    suspend fun getCharacter(name: String): Character {
+        return charDao.getCharacter(name)
+    }
+
+    @WorkerThread
     suspend fun insert(character: Character) {
         charDao.insertCharacter(character)
     }

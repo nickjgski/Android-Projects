@@ -20,6 +20,7 @@ class RaceClassFragment : Fragment() {
     private var selectedRace: String? = null
     private var selectedClass: String? = null
     private var charName: String? = null
+    private var HP: Int = 0
     private var strMod: Int = 0
     private var dexMod: Int = 0
     private var conMod: Int = 0
@@ -77,7 +78,7 @@ class RaceClassFragment : Fragment() {
                 view.findNavController().navigate(
                     R.id.action_raceClassFragment_to_abilityFragment,
                     bundleOf(
-                        "name" to charName, "race" to selectedRace, "class" to selectedClass,
+                        "name" to charName, "race" to selectedRace, "class" to selectedClass, "hitpoints" to HP,
                         "strMod" to strMod, "dexMod" to dexMod, "conMod" to conMod, "intMod" to intMod,
                         "wisMod" to wisMod, "chaMod" to chaMod
                     )
@@ -103,6 +104,25 @@ class RaceClassFragment : Fragment() {
                 //Intentionally empty
             }
 
+        })
+
+        val hitpoints = view.findViewById<EditText>(R.id.HP)
+        hitpoints.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if(s?.toString() != "") {
+                    HP = s?.toString()?.toInt()!!
+                } else {
+                    HP = 0
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //Intentionally empty
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //Intentionally empty
+            }
         })
 
         return view

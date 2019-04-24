@@ -1,3 +1,4 @@
+//noinspection GradleDynamicVersion
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -16,6 +17,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -34,14 +37,16 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-core:16.0.8'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha03'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    implementation 'com.google.firebase:firebase-core:16.0.8'
 
-    compile 'com.google.firebase:firebase-auth:16.2.1'
+    implementation 'com.google.firebase:firebase-auth:16.2.1'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.2'
 
     implementation "androidx.work:work-runtime-ktx:2.0.1"
 
@@ -80,3 +85,5 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui-ktx:1.0.0" // use -ktx for Kotlin
 }
+
+apply plugin: 'com.google.gms.google-services'

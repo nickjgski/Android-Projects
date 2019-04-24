@@ -10,7 +10,9 @@
         <action android:id="@+id/action_listFragment_to_raceClassFragment" app:destination="@id/raceClassFragment"/>
     </fragment>
     <fragment android:id="@+id/detailFragment" android:name="com.nickjgski.dndcompanion.DetailFragment"
-              android:label="fragment_detail" tools:layout="@layout/fragment_detail"/>
+              android:label="fragment_detail" tools:layout="@layout/fragment_detail">
+        <action android:id="@+id/action_detailFragment_to_weaponFragment" app:destination="@id/weaponFragment"/>
+    </fragment>
     <fragment android:id="@+id/raceClassFragment" android:name="com.nickjgski.dndcompanion.RaceClassFragment"
               android:label="fragment_race_class" tools:layout="@layout/fragment_race_class">
         <action android:id="@+id/action_raceClassFragment_to_abilityFragment" app:destination="@id/abilityFragment"/>
@@ -19,4 +21,10 @@
               android:label="fragment_ability" tools:layout="@layout/fragment_ability">
         <action android:id="@+id/action_abilityFragment_to_listFragment" app:destination="@id/listFragment"/>
     </fragment>
+    <fragment android:id="@+id/weaponFragment" android:name="com.nickjgski.dndcompanion.WeaponFragment"
+              android:label="fragment_weapon" tools:layout="@layout/fragment_weapon">
+        <action android:id="@+id/action_weaponFragment_to_combatFragment" app:destination="@id/combatFragment"/>
+    </fragment>
+    <fragment android:id="@+id/combatFragment" android:name="com.nickjgski.dndcompanion.CombatFragment"
+              android:label="fragment_combat" tools:layout="@layout/fragment_combat"/>
 </navigation>

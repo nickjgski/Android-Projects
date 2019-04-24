@@ -61,12 +61,12 @@ class ListFragment : Fragment() {
 
         override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
             holder.view.findViewById<TextView>(R.id.title).text = chars[position].name
-            holder.view.findViewById<TextView>(R.id.race_class_info).text =
+            holder.view.findViewById<TextView>(R.id.extra_info).text =
                 """${chars[position].race} ${chars[position].charClass}"""
             holder.itemView.setOnClickListener{
                 holder.view.findNavController().navigate(R.id.action_listFragment_to_detailFragment,
                     bundleOf("name" to chars[position].name, "charClass" to chars[position].charClass,
-                        "race" to chars[position].race, "level" to chars[position].level,
+                        "race" to chars[position].race, "HP" to chars[position].HP,
                         "strength" to chars[position].str, "dexterity" to chars[position].dex,
                         "constitution" to chars[position].con, "intelligence" to chars[position].int,
                         "wisdom" to chars[position].wis, "charisma" to chars[position].cha)

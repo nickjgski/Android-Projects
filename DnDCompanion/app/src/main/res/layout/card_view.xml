@@ -20,13 +20,13 @@
                 android:maxLength="28"
                 android:ellipsize="end" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
-                app:layout_constraintHorizontal_bias="1.0" app:layout_constraintBottom_toTopOf="@+id/race_class_info"
+                app:layout_constraintHorizontal_bias="1.0" app:layout_constraintBottom_toTopOf="@+id/extra_info"
                 android:layout_marginStart="8dp"/>
         <TextView
                 android:text="@string/character_race_class"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/race_class_info"
+                android:id="@+id/extra_info"
                 app:layout_constraintTop_toBottomOf="@+id/title" app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"

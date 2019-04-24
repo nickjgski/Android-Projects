@@ -18,6 +18,7 @@ class AbilityFragment : Fragment() {
     private var charName: String? = null
     private var charRace: String? = null
     private var charClass: String? = null
+    private var HP: Int? = null
     private var base = IntArray(6)
     private var modifiers = IntArray(6)
     private var result = IntArray(6)
@@ -52,7 +53,7 @@ class AbilityFragment : Fragment() {
         chaResult = view.findViewById(R.id.chaResult)
         initSpinners(view)
         view.findViewById<Button>(R.id.next).setOnClickListener {
-            var character = Character(charName!!, charClass!!, charRace!!, 1, result[0], result[1], result[2], result[3],
+            var character = Character(charName!!, charClass!!, charRace!!, HP!!, result[0], result[1], result[2], result[3],
                 result[4], result[5], 10)
             model?.insertCharacter(character)
             view.findNavController().navigate(R.id.action_abilityFragment_to_listFragment)
@@ -149,6 +150,7 @@ class AbilityFragment : Fragment() {
         charRace = this.arguments?.getString("race")
         charRace = charRace?.substringBefore(':')
         charClass = this.arguments?.getString("class")
+        HP = this.arguments?.getInt("hitpoints")
         modifiers[0] = this.arguments?.getInt("strMod")!!
         modifiers[1] = this.arguments?.getInt("dexMod")!!
         modifiers[2] = this.arguments?.getInt("conMod")!!

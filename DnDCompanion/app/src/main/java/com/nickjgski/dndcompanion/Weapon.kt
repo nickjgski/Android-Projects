@@ -1,8 +1,6 @@
 package com.nickjgski.dndcompanion
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 import androidx.room.ForeignKey.CASCADE
 
@@ -10,13 +8,11 @@ import androidx.room.ForeignKey.CASCADE
     entity = Character::class,
     parentColumns = arrayOf("name"),
     childColumns = arrayOf("characterName"),
-    onDelete = CASCADE)))
+    onDelete = CASCADE)),
+    indices = [Index("characterName")])
 
-data class Weapon(@PrimaryKey var name: String,
-                  var damage: Int,
+data class Weapon(@PrimaryKey @ColumnInfo(name = "name") var name: String,
                   var base: Int,
-                  var proficient: Boolean,
-                  var ability: Abilities,
-                  var spell: Boolean,
+                  var ability: String,
                   var modifier: Int,
                   var characterName: String)

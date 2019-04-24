@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Character(@PrimaryKey @ColumnInfo(name = "name") var name: String,
                      @ColumnInfo(name = "charClass") var charClass: String,
                      @ColumnInfo(name = "race") var race: String,
-                     @ColumnInfo(name = "level") var level: Int,
+                     @ColumnInfo(name = "HP") var HP: Int,
                      @ColumnInfo(name = "str") var str: Int,
                      @ColumnInfo(name = "dex") var dex: Int,
                      @ColumnInfo(name = "con") var con: Int,
@@ -17,5 +17,5 @@ data class Character(@PrimaryKey @ColumnInfo(name = "name") var name: String,
                      @ColumnInfo(name = "cha") var cha: Int,
                      @ColumnInfo(name = "armorClass") var armorClass: Int
                     ) {
-                        constructor() : this("", "", "", 1, 10, 10, 10, 10, 10, 10, 10)
+                        constructor() : this("", "", "", 10, 10, 10, 10, 10, 10, 10, 10)
                     }
