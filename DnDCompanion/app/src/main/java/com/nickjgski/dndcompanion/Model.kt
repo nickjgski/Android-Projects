@@ -13,8 +13,26 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
+import android.R.id.message
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+
 
 class Model(application: Application): AndroidViewModel(application) {
+
+    companion object {
+        fun sendNotificationToUser(user: String, message: String) {
+            val database: FirebaseDatabase = FirebaseDatabase.getInstance("dndcompanionserver.firebaseio.com")
+            var ref: DatabaseReference = database.reference
+            val notifications = ref.child("notificationRequests")
+
+            val notification = HashMap<String, String>()
+            notification["username"] = user
+            notification["message"] = message
+
+            notifications.push().setValue(notification)
+        }
+    }
 
     private var parentJob = Job()
     private val coroutineContext: CoroutineContext

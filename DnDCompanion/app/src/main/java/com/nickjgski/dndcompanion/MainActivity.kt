@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
         mAuth = FirebaseAuth.getInstance()
+        //TODO FIll in subscriptions with character names
+        FirebaseMessaging.getInstance().subscribeToTopic("Fill-this-in")
         if(mAuth.currentUser != null) {
 
         } else {
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
@@ -82,21 +85,4 @@ class MainActivity : AppCompatActivity() {
             })
         // [END auth_fui_delete]
     }
-
-    fun privacyAndTerms() {
-        var providers: List<AuthUI.IdpConfig>  = emptyList()
-        // [START auth_fui_pp_tos]
-        startActivityForResult(
-            AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(providers)
-                .setTosAndPrivacyPolicyUrls(
-                    "https://example.com/terms.html",
-                    "https://example.com/privacy.html")
-                .build(),
-            RC_SIGN_IN)
-        // [END auth_fui_pp_tos]
-    }
-}
-
 }

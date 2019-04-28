@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.os.bundleOf
 import androidx.core.view.get
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
@@ -19,6 +22,7 @@ class WeaponFragment : Fragment() {
     private var weaponAdapter = WeaponListAdapter()
     private var model: Model? = null
     private var selected: String = ""
+    private lateinit var weaponList: RecyclerView
 
     private lateinit var weaponSpinner: Spinner
 
@@ -35,6 +39,10 @@ class WeaponFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_weapon, container, false)
 
         model = activity?.let { ViewModelProviders.of(it).get(Model::class.java) }
+
+        weaponList = view.findViewById(R.id.weaponList)
+        weaponList.layoutManager = LinearLayoutManager(view.context)
+        weaponList.adapter = weaponAdapter
 
         weaponSpinner = view.findViewById(R.id.weaponSelector)
         ArrayAdapter.createFromResource(
@@ -106,6 +114,11 @@ class WeaponFragment : Fragment() {
         override fun onBindViewHolder(holder: WeaponViewHolder, position: Int) {
             holder.view.findViewById<TextView>(R.id.title).text = weapons[position].name
             holder.view.findViewById<TextView>(R.id.extra_info).text = "${weapons[position].modifier}d${weapons[position].base}"
+            holder.itemView.setOnClickListener {
+                holder.view.findNavController().navigate(R.id.action_weaponFragment_to_combatFragment,
+                    bundleOf("name" to weapons[position].name, "base" to weapons[position].base, "modifier" to weapons[position].modifier,
+                        "ability" to weapons[position].ability))
+            }
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeaponViewHolder {
