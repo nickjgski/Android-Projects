@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
         mAuth = FirebaseAuth.getInstance()
-        //TODO FIll in subscriptions with character names
-        FirebaseMessaging.getInstance().subscribeToTopic("Fill-this-in")
         if(mAuth.currentUser != null) {
 
         } else {
@@ -68,7 +66,12 @@ class MainActivity : AppCompatActivity() {
             .signOut(this)
             .addOnCompleteListener(object: OnCompleteListener<Void> {
                 override fun onComplete(p0: Task<Void>) {
-
+                    startActivityForResult(AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(
+                            mutableListOf(AuthUI.IdpConfig.EmailBuilder().build(),
+                                AuthUI.IdpConfig.PhoneBuilder().build())
+                        ).build(), RC_SIGN_IN)
                 }
             })
         // [END auth_fui_signout]

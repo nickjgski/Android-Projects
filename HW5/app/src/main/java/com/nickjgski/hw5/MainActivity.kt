@@ -1,19 +1,19 @@
 package com.nickjgski.hw5
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.firebase.ui.database.FirebaseRecyclerAdapter
@@ -125,8 +125,7 @@ class MainActivity : AppCompatActivity() {
         }
         if(addresses.isEmpty())
             return "No address found :("
-        return "Address:"+ addresses[0].getAddressLine(0)+"\n"+"City:"+ addresses[0].locality +"\n"+
-                "Zip code:"+ addresses[0].postalCode
+        return addresses[0].getAddressLine(0)
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -159,6 +158,14 @@ class MainActivity : AppCompatActivity() {
             holder.view.findViewById<TextView>(R.id.addressText).text = "${loctime.address}"
             holder.view.findViewById<TextView>(R.id.timestamp).text = "${loctime.time}"
             holder.view.setOnClickListener {
+                var gmmIntentUri = Uri.parse("geo:0,0?q=${loctime.latitude},${loctime.longitude}label(Captured here)")
+                var mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                if (mapIntent.resolveActivity(packageManager) != null) {
+                    startActivity(mapIntent)
+                }
+            }
+            holder.view.findViewById<Button>(R.id.delete).setOnClickListener {
                 ref.child("loctimes").child("${loctime.time}").removeValue()
             }
 

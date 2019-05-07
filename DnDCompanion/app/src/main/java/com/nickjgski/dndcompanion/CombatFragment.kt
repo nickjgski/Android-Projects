@@ -4,6 +4,7 @@ package com.nickjgski.dndcompanion
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ class CombatFragment : Fragment() {
 
     private var target: String = ""
     private var damage: Int = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +58,7 @@ class CombatFragment : Fragment() {
         send = view.findViewById(R.id.attack)
 
         send.setOnClickListener {
-
+            sendAttack()
         }
 
         return view
@@ -69,11 +71,17 @@ class CombatFragment : Fragment() {
         weaponText.text = weapon
         var times = this.arguments?.getInt("modifier")
         var base = this.arguments?.getInt("base")
+        for(i in 1..times!!) {
+            damage += (1..base!!).random()
+        }
 
     }
 
     private fun sendAttack() {
-
+        if(target != "") {
+            Log.d("SendAttempt", "Button pressed")
+            Model.sendNotificationToUser(target, "$damage")
+        }
     }
 
 

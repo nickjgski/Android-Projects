@@ -14,23 +14,33 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 import android.R.id.message
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class Model(application: Application): AndroidViewModel(application) {
 
     companion object {
         fun sendNotificationToUser(user: String, message: String) {
-            val database: FirebaseDatabase = FirebaseDatabase.getInstance("dndcompanionserver.firebaseio.com")
+            val database: FirebaseDatabase = FirebaseDatabase.getInstance("https://dndcompanionserver.firebaseio.com/")
             var ref: DatabaseReference = database.reference
             val notifications = ref.child("notificationRequests")
-
+            Log.d("SendAttempt", "Got notification ref")
             val notification = HashMap<String, String>()
             notification["username"] = user
             notification["message"] = message
 
-            notifications.push().setValue(notification)
+            notifications.push().setValue(notification, object: DatabaseReference.CompletionListener {
+                override fun onComplete(databaseError: DatabaseError?, databaseReference: DatabaseReference) {
+                    if (databaseError != null) {
+                        System.out.println("Data could not be saved " + databaseError.message)
+                    } else {
+                        System.out.println("Data saved successfully.")
+                    }
+                }
+            })
         }
     }
 
@@ -49,13 +59,25 @@ class Model(application: Application): AndroidViewModel(application) {
         allCharacters = charRepo.allCharacters
         val weaponDao = CharacterRoomDatabase.getDatabase(application).weaponDao()
         weaponRepo = WeaponRepository(weaponDao)
+        subscribe()
+    }
+
+    private fun subscribe() {
+        var mFBmessage = FirebaseMessaging.getInstance()
+        allCharacters.value?.let {
+            for (character in it) {
+                mFBmessage.subscribeToTopic("user_${character.name}")
+            }
+        }
     }
 
     fun insertCharacter(character: Character) = scope.launch (Dispatchers.IO) {
+        FirebaseMessaging.getInstance().subscribeToTopic("user_${character.name}")
         charRepo.insert(character)
     }
 
     fun deleteCharacter(name: String) = scope.launch (Dispatchers.IO) {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("user_$name")
         charRepo.delete(charRepo.getCharacter(name))
     }
 
