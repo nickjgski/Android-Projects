@@ -32,15 +32,14 @@ class Model(application: Application): AndroidViewModel(application) {
             notification["username"] = user
             notification["message"] = message
 
-            notifications.push().setValue(notification, object: DatabaseReference.CompletionListener {
-                override fun onComplete(databaseError: DatabaseError?, databaseReference: DatabaseReference) {
-                    if (databaseError != null) {
-                        System.out.println("Data could not be saved " + databaseError.message)
-                    } else {
-                        System.out.println("Data saved successfully.")
-                    }
+            notifications.push().setValue(notification
+            ) { databaseError, databaseReference ->
+                if (databaseError != null) {
+                    System.out.println("Data could not be saved " + databaseError.message)
+                } else {
+                    System.out.println("Data saved successfully.")
                 }
-            })
+            }
         }
     }
 

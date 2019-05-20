@@ -79,7 +79,7 @@ class CombatFragment : Fragment() {
 
     private fun sendAttack() {
         if(target != "") {
-            Log.d("SendAttempt", "Button pressed")
+            Log.d("SendAttempt", target)
             Model.sendNotificationToUser(target, "$damage")
         }
     }

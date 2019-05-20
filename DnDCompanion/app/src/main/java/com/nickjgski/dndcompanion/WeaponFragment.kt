@@ -2,6 +2,7 @@ package com.nickjgski.dndcompanion
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,8 @@ class WeaponFragment : Fragment() {
         weaponList.layoutManager = LinearLayoutManager(view.context)
         weaponList.adapter = weaponAdapter
 
+
+
         weaponSpinner = view.findViewById(R.id.weaponSelector)
         ArrayAdapter.createFromResource(
             view.context,
@@ -81,10 +84,12 @@ class WeaponFragment : Fragment() {
             this,
             Observer<List<Weapon>>{ weapons ->
                 weapons?.let {
+                    Log.d("Weapon", weapons.toString())
                     weaponAdapter.setWeapons(it)
                 }
             }
         )
+
     }
 
     private fun addWeapon() {

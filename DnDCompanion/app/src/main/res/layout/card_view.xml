@@ -4,7 +4,7 @@
                                    xmlns:tools="http://schemas.android.com/tools"
                                    android:layout_width="match_parent"
                                    android:layout_height="wrap_content"
-                                   android:layout_margin="5dp" app:cardBackgroundColor="@color/cardview_light_background"
+                                   android:layout_margin="5dp" app:cardBackgroundColor="@color/cardview_dark_background"
                                    tools:layout_editor_absoluteY="5dp" tools:layout_editor_absoluteX="5dp">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,7 +21,7 @@
                 android:ellipsize="end" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
                 app:layout_constraintHorizontal_bias="1.0" app:layout_constraintBottom_toTopOf="@+id/extra_info"
-                android:layout_marginStart="8dp"/>
+                android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
         <TextView
                 android:text="@string/character_race_class"
                 android:layout_width="0dp"
